@@ -1,8 +1,8 @@
 {
-  "name": "stenbrottsv-gen-bokningsportal",
+  "name": "stenbrottsvagen-bokningsportal",
   "version": "1.0.0",
   "private": true,
-  "description": "stenbrottsv-gen-bokningsportal",
+  "description": "stenbrottsvagen-bokningsportal",
   "author": "Daniel Tängerfors",
   "keywords": [
     "gatsby"
@@ -17,18 +17,29 @@
   },
   "dependencies": {
     "autoprefixer": "^10.4.14",
+    "firebase": "^10.1.0",
+    "framer-motion": "^10.15.1",
     "gatsby": "^5.11.0",
     "gatsby-plugin-postcss": "^6.11.0",
     "gatsby-plugin-sitemap": "^6.11.0",
     "postcss": "^8.4.27",
     "react": "^18.2.0",
+    "react-big-calendar": "^1.8.1",
+    "react-device-detect": "^2.2.3",
     "react-dom": "^18.2.0",
-    "tailwindcss": "^3.3.3"
+    "react-hook-form": "^7.45.4",
+    "react-lottie": "^1.2.3",
+    "react-photo-album": "^2.2.2",
+    "remixicon": "^3.5.0",
+    "tailwindcss": "^3.3.3",
+    "yet-another-react-lightbox": "^3.12.0"
   },
   "devDependencies": {
     "@types/node": "^20.3.3",
     "@types/react": "^18.2.14",
+    "@types/react-big-calendar": "^1.6.4",
     "@types/react-dom": "^18.2.6",
+    "@types/react-lottie": "^1.2.6",
     "typescript": "^5.1.6"
   }
 }
