@@ -7,7 +7,7 @@ import ViewAllBookings from "../../ViewAllBookings"
 import BookingCalendar from "../../booking_calendar";
 
 import logo from "../../../images/logo.svg"
-import bgImage from "../../../images/cover-bungenas.webp";
+import bgImage from "../../../images/cover-garden.webp";
 
 const AppIndexPage: React.FC<PageProps> = ({ openPopup, isUpdatingBooking }: any) => {
   return (
