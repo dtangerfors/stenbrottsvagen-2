@@ -3,6 +3,8 @@ import { onValue } from "firebase/database";
 import bookingDB from "../firebase/bookingDb";
 import Card from "./BookingCard";
 
+import { BookingData } from "./booking_form/type";
+
 function ViewPersonalBookings(props: any) {
   const [bookings, setBookings] = useState<any>([]);
 
@@ -35,9 +37,20 @@ function ViewPersonalBookings(props: any) {
     };
   }, [props.userID]);
 
-  return bookings.map((booking: any, index: number) => {
-  return (<Card userIsLoggedIn={true} key={index} booking={booking} isUpdatingBooking={props.isUpdatingBooking} />)
-});
+  function checkDate(booking: BookingData) {
+    const bookingDeparture = new Date(booking.bookingDeparture);
+    const currentDate = new Date;
+
+    if (props.isCurrentBookings) {
+      return bookingDeparture > currentDate
+    } else {
+      return bookingDeparture < currentDate
+    }
+  }
+
+  return bookings
+  .filter(checkDate)
+  .map((booking: any, index: number) => (<Card userIsLoggedIn={true} key={index} booking={booking} isUpdatingBooking={props.isUpdatingBooking} />));
 }
 
 export default ViewPersonalBookings;
