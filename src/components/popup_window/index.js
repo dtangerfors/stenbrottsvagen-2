@@ -1,8 +1,9 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useState, useContext} from "react";
 import Overlay from "../Overlay";
 import { motion, AnimatePresence } from "framer-motion";
 import BookingForm from "../booking_form";
 import FormContent from "./popup_content.json"
+import {AuthContext} from "../../auth/AuthProvider"
 
 const variants = {
   visible: { y: 0, x: "-50%", opacity: 1 },
@@ -10,8 +11,10 @@ const variants = {
 };
 
 const Popup = (props) => {
-  const {popupForm, user, onBookingComplete, closePopup} = props;
+  const {popupForm, onBookingComplete, closePopup} = props;
   const [popupData, setPopupData] = useState();
+
+  const user = useContext(AuthContext).currentUser;
 
   useEffect(() => {
     if (popupForm.isUpdatingBooking) {
