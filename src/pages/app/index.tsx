@@ -1,7 +1,6 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState} from "react";
 import { Router } from "@reach/router";
 import PrivateRoute from "../../components/PrivateRoute";
-import { AuthContext } from "../../auth/AuthProvider";
 
 import AppIndexPage from "../../components/app_pages/home";
 import AppInfoPage from "../../components/app_pages/info";
@@ -24,8 +23,6 @@ const App = () => {
     isUpdatingBooking: false,
     bookingKey: "",
   });
-
-  const user = useContext(AuthContext).currentUser;
 
   const handleCompleteBooking = (data: any) => {
     setBookingSuccess({
@@ -84,7 +81,6 @@ const App = () => {
       <Popup
         popupForm={popupForm}
         closePopup={closePopup}
-        user={user}
         onBookingComplete={handleCompleteBooking}
       />
       {bookingSuccess.status ? (<Complete message={bookingSuccess.message} />) : null}
