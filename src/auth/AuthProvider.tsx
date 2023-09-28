@@ -19,7 +19,6 @@ const AuthProvider: FC<Props> = ({ children }) => {
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       setCurrentUser(user);
-      console.log('user is logged in')
     });
   }, []);
 
