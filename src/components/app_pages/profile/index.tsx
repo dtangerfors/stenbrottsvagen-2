@@ -10,7 +10,7 @@ import Accordion from "../../Accordion";
 
 const AppProfilePage: React.FC<PageProps> = ({ isUpdatingBooking }: any) => {
   const [currentBooking, setCurrentBooking] = useState(null);
-  const user = useContext(AuthContext);
+  const user = useContext(AuthContext).currentUser;
 
   const refreshList = () => {
     setCurrentBooking(null);
@@ -24,7 +24,7 @@ const AppProfilePage: React.FC<PageProps> = ({ isUpdatingBooking }: any) => {
     console.log(`Current bookingKey is: ${key}`);
   };
 
-  const lastSignInTime = new Date(user.currentUser.metadata.lastSignInTime).toLocaleString(
+  const lastSignInTime = new Date(user.metadata.lastSignInTime).toLocaleString(
     "sv-SE",
     {
       year: "numeric",
@@ -47,14 +47,14 @@ const AppProfilePage: React.FC<PageProps> = ({ isUpdatingBooking }: any) => {
         <div className="flex flex-col items-center">
           <div className="relative w-40 h-40 -mt-20 mb-4 rounded-full bg-white border-4 border-gray-50 overflow-hidden flex-shrink-0 dark:border-black-900">
             <img
-              src={user.currentUser.photoURL}
-              alt={user.currentUser.displayName}
+              src={user.photoURL}
+              alt={user.displayName}
               className="w-full h-full object-cover relative"
             />
           </div>
           <div className="flex-auto truncate text-center">
             <h1 className="font-title font-semibold text-heading text-black truncate dark:text-white">
-              {user.currentUser.displayName}
+              {user.displayName}
             </h1>
             <p className="whitespace-normal text-sm text-gray-700 uppercase tracking-wider font-medium mb-8 dark:text-gray-300">
               Inloggad sedan {lastSignInTime}
@@ -66,7 +66,7 @@ const AppProfilePage: React.FC<PageProps> = ({ isUpdatingBooking }: any) => {
         <section className="w-full max-w-screen-xl mx-auto mb-12">
           <div className="grid gap-8 lg:grid-cols-3">
             <ViewPersonalBookings
-              userID={user.currentUser.uid}
+              userID={user.uid}
               // bookings={props.user.bookings}
               setActiveBooking={setActiveBooking}
               isUpdatingBooking={isUpdatingBooking}
@@ -78,7 +78,7 @@ const AppProfilePage: React.FC<PageProps> = ({ isUpdatingBooking }: any) => {
           <Accordion title="Passerade bokningar">
             <div className="grid gap-8 lg:grid-cols-3">
               <ViewPersonalBookings
-                userID={user.currentUser.uid}
+                userID={user.uid}
                 // bookings={props.user.bookings}
                 setActiveBooking={setActiveBooking}
                 isUpdatingBooking={isUpdatingBooking}
