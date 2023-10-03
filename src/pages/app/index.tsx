@@ -91,4 +91,12 @@ const App = () => {
 
 export default App;
 
-export const Head: HeadFC = () => <title>Stenbrottsvägen | Bokning & information</title>
+export const Head: HeadFC = () => {
+  return (
+    <>
+      <title>Stenbrottsvägen | Bokning & information</title>
+      <meta name="viewport" content="initial-scale=1, viewport-fit=cover, user-scalable=no" />
+      <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    </>
+  );
+};

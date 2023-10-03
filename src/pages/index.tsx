@@ -1,14 +1,14 @@
-import React from "react"
+import React from "react";
 import { signInWithPopup } from "firebase/auth";
 import { auth, provider } from "../firebase";
 import { useAuthValue } from "../auth/AuthProvider";
 
-import type { HeadFC, PageProps } from "gatsby"
+import type { HeadFC, PageProps } from "gatsby";
 import { navigate } from "gatsby";
 import "remixicon/fonts/remixicon.css";
 
 import { PrimaryButton } from "../components/buttons";
-import bgImage from "../images/cover-bungenas.webp"
+import bgImage from "../images/cover-bungenas.webp";
 
 const IndexPage: React.FC<PageProps> = () => {
   const handleLogin = async (e: any) => {
@@ -21,10 +21,10 @@ const IndexPage: React.FC<PageProps> = () => {
     }
   };
 
-  const {currentUser} = useAuthValue()
-  if(currentUser){
-    navigate("/app/hem")
-    return null
+  const { currentUser } = useAuthValue();
+  if (currentUser) {
+    navigate("/app/hem");
+    return null;
   }
 
   return (
@@ -46,16 +46,22 @@ const IndexPage: React.FC<PageProps> = () => {
           <PrimaryButton
             onClick={handleLogin}
             text={"Logga in med Google"}
-            actionText={
-              "Klicka här för att logga in till portalen"
-            }
+            actionText={"Klicka här för att logga in till portalen"}
           />
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default IndexPage
+export default IndexPage;
 
-export const Head: HeadFC = () => <title>Stenbrottsvägen | Logga in</title>
+export const Head: HeadFC = () => {
+  return (
+    <>
+      <title>Stenbrottsvägen | Logga in</title>
+      <meta name="viewport" content="initial-scale=1, viewport-fit=cover, user-scalable=no" />
+      <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    </>
+  );
+};

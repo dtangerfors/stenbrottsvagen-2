@@ -46,4 +46,12 @@ const NotFoundPage: React.FC<PageProps> = () => {
 
 export default NotFoundPage
 
-export const Head: HeadFC = () => <title>Not found</title>
+export const Head: HeadFC = () => {
+  return (
+    <>
+      <title>Not found</title>
+      <meta name="viewport" content="initial-scale=1, viewport-fit=cover, user-scalable=no" />
+      <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    </>
+  );
+};
