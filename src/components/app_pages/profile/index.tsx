@@ -1,6 +1,5 @@
 import React, { useContext, useState } from "react";
-import type { HeadFC, PageProps } from "gatsby";
-import Layout from "../../layout";
+import type { PageProps } from "gatsby";
 import FixedHeader from "../../FixedHeader";
 import { AuthContext } from "../../../auth/AuthProvider";
 import ViewPersonalBookings from "../../ViewPersonalBookings";
@@ -93,5 +92,3 @@ const AppProfilePage: React.FC<PageProps> = ({ isUpdatingBooking }: any) => {
 };
 
 export default AppProfilePage;
-
-export const Head: HeadFC = () => <title>Stenbrottsvägen | Profil</title>;

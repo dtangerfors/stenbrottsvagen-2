@@ -1,5 +1,5 @@
 import React from "react";
-import type { HeadFC, PageProps } from "gatsby";
+import type { PageProps } from "gatsby";
 import { signOut } from "firebase/auth";
 import FixedHeader from "../../FixedHeader";
 import { MenuButtonInternal, MenuButtonExternal } from "./MenuButtons";
@@ -42,5 +42,3 @@ const AppMenuPage: React.FC<PageProps> = () => {
 };
 
 export default AppMenuPage;
-
-export const Head: HeadFC = () => <title>Stenbrottsvägen | Meny</title>;

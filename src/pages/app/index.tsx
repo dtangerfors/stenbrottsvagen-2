@@ -1,4 +1,5 @@
 import React, { useState} from "react";
+import type { HeadFC } from "gatsby"
 import { Router } from "@reach/router";
 import PrivateRoute from "../../components/PrivateRoute";
 
@@ -89,3 +90,5 @@ const App = () => {
 };
 
 export default App;
+
+export const Head: HeadFC = () => <title>Stenbrottsvägen | Bokning & information</title>

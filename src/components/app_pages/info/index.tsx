@@ -1,6 +1,5 @@
 import React from "react";
-import type { HeadFC, PageProps } from "gatsby";
-import Layout from "../../layout";
+import type { PageProps } from "gatsby";
 import FixedHeader from "../../FixedHeader";
 
 const AppInfoPage: React.FC<PageProps> = () => {
@@ -44,7 +43,7 @@ const AppInfoPage: React.FC<PageProps> = () => {
                       <td className="py-2 first:pl-8 last:pr-8">200 kr</td>
                     </tr>
                     <tr className="text-gray-600 dark:text-gray-100">
-                      <td colSpan="3" className="pt-8 px-8">
+                      <td colSpan={3} className="pt-8 px-8">
                         Uthyrning för vecka 3500:- Pengarna insättes på konto:
                         5217&nbsp;167&nbsp;0357&nbsp;77 (SEB), senast samma år.
                       </td>
@@ -76,7 +75,7 @@ const AppInfoPage: React.FC<PageProps> = () => {
                       <td className="py-2 first:pl-8 last:pr-8">Jämn v</td>
                     </tr>
                     <tr className="text-gray-600 dark:text-gray-100">
-                      <td colSpan="3" className="pt-8 px-8">
+                      <td colSpan={3} className="pt-8 px-8">
                         <span className="text-headline font-bold text-black-900 dark:text-white block">
                           Aktuella datum 2022:
                         </span>{" "}
@@ -126,5 +125,3 @@ const AppInfoPage: React.FC<PageProps> = () => {
 };
 
 export default AppInfoPage;
-
-export const Head: HeadFC = () => <title>Stenbrottsvägen | Information</title>;
