@@ -1,5 +1,5 @@
 import React from "react";
-import type { HeadFC, PageProps } from "gatsby";
+import type { PageProps } from "gatsby";
 import FixedHeader from "../../FixedHeader";
 
 import reactLogo from "../../../images/react.svg";
@@ -66,5 +66,3 @@ const AppAboutPage: React.FC<PageProps> = () => {
 }
 
 export default AppAboutPage
-
-export const Head: HeadFC = () => <title>Stenbrottsvägen | Om</title>;

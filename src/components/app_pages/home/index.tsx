@@ -1,5 +1,5 @@
 import * as React from "react"
-import type { HeadFC, PageProps } from "gatsby"
+import type { PageProps } from "gatsby"
 import "remixicon/fonts/remixicon.css";
 import Hero from "./Hero";
 import FixedHeader from "../../FixedHeader";
@@ -51,5 +51,3 @@ const AppIndexPage: React.FC<PageProps> = ({ openPopup, isUpdatingBooking }: any
 }
 
 export default AppIndexPage
-
-export const Head: HeadFC = () => <title>Stenbrottsvägen | Bokning & information</title>

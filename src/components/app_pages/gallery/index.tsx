@@ -1,6 +1,5 @@
 import React from "react";
-import type { HeadFC, PageProps } from "gatsby";
-
+import type { PageProps } from "gatsby";
 import FixedHeader from "../../FixedHeader";
 import GallerySection from "./GallerySection";
 
@@ -23,5 +22,3 @@ const AppGalleryPage: React.FC<PageProps> = () => {
 };
 
 export default AppGalleryPage;
-
-export const Head: HeadFC = () => <title>Stenbrottsvägen | Galleri</title>;
