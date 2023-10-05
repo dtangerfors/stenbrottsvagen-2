@@ -10,7 +10,7 @@ const Layout = ({children, openPopup}) => {
          <DesktopHeader openPopup={openPopup} />
       </BrowserView>
       <div className="flex flex-col relative min-h-screen bg-gray-50 dark:bg-black-900"
-      style={{ paddingBottom: isMobile ? 100 : 0 }}>
+      style={{ paddingBottom: isMobile ? 106 : 0 }}>
          {children}
       </div>
       <MobileView>

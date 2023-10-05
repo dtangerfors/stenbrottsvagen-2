@@ -25,10 +25,7 @@ const Hero = () => {
   return (
     <div className="relative h-[47rem] pt-40 pb-20 z-[2]" ref={heroRef}>
       <div className="absolute w-full h-full inset-0">
-        <img src={bgImage} className="w-full h-full object-cover" />
-      </div>
-      <div className="absolute w-full h-full inset-0 bg-black-900/10">
-        <div className="absolute bottom-0 h-full w-full bg-black-900/10" style={{backdropFilter:`blur(${blurValue}px)`}}></div>
+        <div className="absolute bottom-0 h-full w-full" style={{backdropFilter:`blur(${blurValue}px)`, WebkitBackdropFilter:`blur(${blurValue}px)`}}></div>
       </div>
       <div className="relative z-10 flex flex-col items-center">
         <h1 className="text-heading text-white font-semibold">
