@@ -77,7 +77,7 @@ module.exports = {
         full: "100%",
       },
       padding: {
-        safeBottom: "max(2rem, env(safe-area-inset-bottom))",
+        safeBottom: "max(2.5rem, env(safe-area-inset-bottom))",
         100: "100%",
         "safe-top": "env(safe-area-inset-top)",
         "safe-bottom": "env(safe-area-inset-bottom)",

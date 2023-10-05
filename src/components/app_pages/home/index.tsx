@@ -7,7 +7,7 @@ import ViewAllBookings from "../../ViewAllBookings"
 import BookingCalendar from "../../booking_calendar";
 
 import logo from "../../../images/logo.svg"
-import bgImage from "../../../images/cover-garden.webp";
+import bgImage from "../../../images/cover-flowers-desktop.webp";
 
 const AppIndexPage: React.FC<PageProps> = ({ openPopup, isUpdatingBooking }: any) => {
   return (
@@ -37,7 +37,7 @@ const AppIndexPage: React.FC<PageProps> = ({ openPopup, isUpdatingBooking }: any
                </div>
             </div>
          </section>
-         <section className="px-8 py-20 bg-black-900/40">
+         <section className="px-8 py-20">
             <div className="grid gap-8 lg:grid-cols-3 w-full max-w-screen-xl mx-auto">
                <ViewAllBookings isUpdatingBooking={isUpdatingBooking}/>
             </div>
@@ -45,6 +45,7 @@ const AppIndexPage: React.FC<PageProps> = ({ openPopup, isUpdatingBooking }: any
       </main>
       <div className="h-screen w-screen fixed inset-0 z-[1]">
          <img src={bgImage} className="w-full h-full object-cover" />
+         <div className="absolute w-full h-full inset-0 bg-black-900/20"></div>
       </div>
    </>
   )

@@ -4,7 +4,7 @@ import FixedHeader from "../../FixedHeader";
 import { AuthContext } from "../../../auth/AuthProvider";
 import ViewPersonalBookings from "../../ViewPersonalBookings";
 
-import bgImage from "../../../images/cover-bungenas.webp";
+import bgImage from "../../../images/cover-flowers-desktop.webp";
 import Accordion from "../../Accordion";
 
 const AppProfilePage: React.FC<PageProps> = ({ isUpdatingBooking }: any) => {

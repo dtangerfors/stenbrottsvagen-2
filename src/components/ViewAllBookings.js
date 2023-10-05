@@ -3,7 +3,7 @@ import { onValue } from "firebase/database";
 import bookingDB from "../firebase/bookingDb";
 import Card from "./BookingCard";
 import { onDataChange } from "../firebase/index";
-import {AuthContext} from "../auth/AuthProvider"
+import { AuthContext } from "../auth/AuthProvider";
 
 function ViewAllBookings(props) {
   const [bookings, setBookings] = useState([]);
@@ -20,7 +20,7 @@ function ViewAllBookings(props) {
         onDataChange(data, setBookings);
       });
     };
-  },[]);
+  }, []);
 
   const sortedBookings = bookings.sort(function (a, b) {
     var dateA = new Date(a.bookingArrival),
@@ -28,9 +28,7 @@ function ViewAllBookings(props) {
     return dateA - dateB;
   });
 
-  const noFutureBookings = (booking) =>
-    Date.parse(booking.bookingDeparture) <= Date.now();
-
+  const noFutureBookings = (booking) => Date.parse(booking.bookingDeparture) <= Date.now();
 
   if (!bookings || bookings.every(noFutureBookings)) {
     return (
@@ -42,9 +40,17 @@ function ViewAllBookings(props) {
     return sortedBookings
       .filter((booking) => Date.parse(booking.bookingDeparture) >= Date.now())
       .map((booking, index) => {
-        let isLoggedIn = loggedInUser.uid === booking.bookingUserID ? true : false;
-      return (<Card userIsLoggedIn={isLoggedIn} key={index} booking={booking} isUpdatingBooking={props.isUpdatingBooking} />)
-    });
+        let isLoggedIn =
+          loggedInUser.uid === booking.bookingUserID ? true : false;
+        return (
+          <Card
+            userIsLoggedIn={isLoggedIn}
+            key={index}
+            booking={booking}
+            isUpdatingBooking={props.isUpdatingBooking}
+          />
+        );
+      });
   }
 }
 
