@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import { onValue } from "firebase/database";
 import bookingDB from "../firebase/bookingDb";
-import Card from "./BookingCard";
+import Card from "./booking_card";
 
 import { BookingData } from "./booking_form/type";
 

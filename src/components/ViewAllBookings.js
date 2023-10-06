@@ -1,9 +1,16 @@
 import React, { useState, useEffect, useContext } from "react";
 import { onValue } from "firebase/database";
 import bookingDB from "../firebase/bookingDb";
-import Card from "./BookingCard";
+import Card from "./booking_card";
 import { onDataChange } from "../firebase/index";
 import { AuthContext } from "../auth/AuthProvider";
+
+function checkTravelYear(booking) {
+  const bookingDepartureYear = new Date(booking.bookingDeparture).getFullYear();
+  const thisYear = new Date().getFullYear();
+
+  return bookingDepartureYear >= thisYear
+}
 
 function ViewAllBookings(props) {
   const [bookings, setBookings] = useState([]);
@@ -38,7 +45,8 @@ function ViewAllBookings(props) {
     );
   } else {
     return sortedBookings
-      .filter((booking) => Date.parse(booking.bookingDeparture) >= Date.now())
+      .filter(checkTravelYear)
+      .reverse()
       .map((booking, index) => {
         let isLoggedIn =
           loggedInUser.uid === booking.bookingUserID ? true : false;
