@@ -9,7 +9,7 @@ import bgDot from "../../images/dot.svg";
 const Card = ({booking, userIsLoggedIn, isUpdatingBooking}: {booking: BookingData, userIsLoggedIn: boolean, isUpdatingBooking: any}) => {
 
   return (
-    <div className="flex flex-col flex-30">
+    <div className="flex flex-col flex-30 overflow-hidden">
       <div className="flex flex-col flex-1 gap-8 rounded-t-sm p-8 md:p-10 bg-white dark:bg-black-800">
         <div className="w-full">
           <p className="text-black-900 text-base font-medium leading-snug dark:text-white">

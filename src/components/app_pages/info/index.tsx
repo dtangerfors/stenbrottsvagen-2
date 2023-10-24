@@ -8,8 +8,8 @@ const AppInfoPage: React.FC<PageProps> = () => {
       <FixedHeader>
         <h1 className="mx-auto text-base text-white">Info</h1>
       </FixedHeader>
-      <main>
-        <section  className="px-8 pt-20 mt-20">
+      <main className="mt-20 pt-safe-top">
+        <section className="px-8 pt-8 lg:pt-0">
           <div className="w-full max-w-screen-xl mx-auto">
             <div className="grid gap-8 lg:grid-cols-3">
               <div className="rounded-sm shadow-xl shadow-black-900/5 pt-8 pb-12 bg-white w-full dark:bg-black-800">

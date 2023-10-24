@@ -8,7 +8,9 @@ import { navigate } from "gatsby";
 import "remixicon/fonts/remixicon.css";
 
 import { PrimaryButton } from "../components/buttons";
-import bgImage from "../images/cover-bungenas.webp";
+import bgImage from "../images/cover-flowers-desktop.webp";
+import logo from "../images/logo.svg"
+import MetaTags from "../components/MetaTags";
 
 const IndexPage: React.FC<PageProps> = () => {
   const handleLogin = async (e: any) => {
@@ -28,17 +30,23 @@ const IndexPage: React.FC<PageProps> = () => {
   }
 
   return (
-    <div className="w-full h-screen grid grid-rows-3">
-      <div className="row-span-2">
-        <img src={bgImage} className="w-full h-full object-cover" />
+    <div className="w-full h-screen grid grid-rows-5">
+      <div className="relative row-span-3 grid place-items-center">
+        <figure className="relative z-10">
+          <img src={logo} className="w-40" />
+        </figure>
+        <div className="absolute inset-0 w-full h-full">
+          <img src={bgImage} className="w-full h-full object-cover" />
+          <div className="absolute inset-0 w-full h-full bg-secondary/90"></div>
+        </div>
       </div>
-      <div className="bg-secondary px-8">
-        <div className="relative max-w-screen-sm -mt-20 mx-auto rounded-sm p-12 bg-white text-center">
+      <div className="row-span-2 flex">
+        <div className="relative w-full -mt-6 mx-auto rounded-t-xl p-12 text-center bg-white dark:bg-black-800">
           <header className="mb-10">
-            <h1 className="font-title font-semibold text-title1">
+            <h1 className="font-title font-semibold text-title1 text-black-900 dark:text-white">
               Stenbrottsvägen 3
             </h1>
-            <p className="text-base text-gray-700">
+            <p className="text-base text-gray-700 dark:text-gray-300">
               Logga in för att boka och se information
             </p>
           </header>
@@ -60,8 +68,7 @@ export const Head: HeadFC = () => {
   return (
     <>
       <title>Stenbrottsvägen | Logga in</title>
-      <meta name="viewport" content="initial-scale=1, viewport-fit=cover, user-scalable=no" />
-      <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+      <MetaTags />
     </>
   );
 };

@@ -13,7 +13,7 @@ const AppMenuPage: React.FC<PageProps> = () => {
       <FixedHeader>
         <h1 className="mx-auto text-base text-white">Meny</h1>
       </FixedHeader>
-      <main className="mt-20">
+      <main className="mt-20 pt-safe-top">
         <ul className="max-w-screen-sm mx-auto">
           <li>
             <MenuButtonInternal

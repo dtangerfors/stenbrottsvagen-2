@@ -1,5 +1,6 @@
 import * as React from "react"
 import { Link, HeadFC, PageProps } from "gatsby"
+import MetaTags from "../components/MetaTags"
 
 const pageStyles = {
   color: "#232129",
@@ -50,8 +51,7 @@ export const Head: HeadFC = () => {
   return (
     <>
       <title>Not found</title>
-      <meta name="viewport" content="initial-scale=1, viewport-fit=cover, user-scalable=no" />
-      <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+      <MetaTags />
     </>
   );
 };

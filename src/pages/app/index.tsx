@@ -12,6 +12,7 @@ import AppGalleryPage from "../../components/app_pages/gallery";
 import Layout from "../../components/layout";
 import Popup from "../../components/popup_window";
 import Complete from "../../components/Complete";
+import MetaTags from "../../components/MetaTags";
 
 const App = () => {
   const [bookingSuccess, setBookingSuccess] = useState({
@@ -95,8 +96,7 @@ export const Head: HeadFC = () => {
   return (
     <>
       <title>Stenbrottsvägen | Bokning & information</title>
-      <meta name="viewport" content="initial-scale=1, viewport-fit=cover, user-scalable=no" />
-      <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+      <MetaTags />
     </>
   );
 };
