@@ -1,20 +1,20 @@
 require("dotenv").config({
-  path: `.env.${process.env.NODE_ENV}`, 
-})
+  path: `.env.${process.env.NODE_ENV}`,
+});
 
 import type { GatsbyConfig } from "gatsby";
 
 const config: GatsbyConfig = {
   siteMetadata: {
     title: `Stenbrottsvägen Bokningsportal`,
-    siteUrl: `https://stenbrottsvagen.se`
+    siteUrl: `https://stenbrottsvagen.se`,
   },
   // More easily incorporate content into your pages through automatic TypeScript type generation and better GraphQL IntelliSense.
   // If you use VSCode you can also use the GraphQL plugin
   // Learn more at: https://gatsby.dev/graphql-typegen
   graphqlTypegen: true,
   plugins: [
-    `gatsby-plugin-postcss`, 
+    `gatsby-plugin-postcss`,
     `gatsby-plugin-sitemap`,
     {
       resolve: `gatsby-plugin-manifest`,
@@ -25,8 +25,9 @@ const config: GatsbyConfig = {
         background_color: `#FFFFFF`,
         theme_color: `#223c3b`,
         display: `standalone`,
-        icon: `src/images/logo.svg`
-      }
+        icon: `src/images/logo.svg`,
+        legacy: false,
+      },
     },
     {
       resolve: `gatsby-plugin-offline`,
@@ -34,7 +35,7 @@ const config: GatsbyConfig = {
         precachePages: [`/`, `/app/*`],
       },
     },
-]
+  ],
 };
 
 export default config;
