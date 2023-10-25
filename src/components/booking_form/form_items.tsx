@@ -1,4 +1,4 @@
-import React, {InputHTMLAttributes, SelectHTMLAttributes} from "react";
+import React, {InputHTMLAttributes, SelectHTMLAttributes, TextareaHTMLAttributes} from "react";
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   id: string;
@@ -16,6 +16,12 @@ interface CheckboxProps extends InputHTMLAttributes<HTMLInputElement> {
   id: string;
   defaultValue: string;
   register: any;
+}
+
+interface TextareaProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
+  id: string;
+  register: any;
+  placeholder: string;
 }
 
 const Form = ({ children, ...props }: any) => (
@@ -45,6 +51,16 @@ const Input: React.FC<InputProps> = ({ id, type, placeholder, register }: any) =
     {...register}
     className="font-sans text-default bg-white border border-gray-300 rounded-lg appearance-none h-16 p-2 px-4 invalid:border-red dark:bg-black-900 dark:border-black-600 dark:text-white dark:placeholder-shown:text-gray-400"
   />
+);
+
+const Textarea: React.FC<TextareaProps> = ({ id, placeholder, register }: any) => (
+  <textarea
+    id={id}
+    placeholder={placeholder}
+    {...register}
+    rows={4}
+    className="font-sans text-default bg-white border border-gray-300 rounded-lg appearance-none p-2 px-4 invalid:border-red dark:bg-black-900 dark:border-black-600 dark:text-white dark:placeholder-shown:text-gray-400"
+  ></textarea>
 );
 
 const Select: React.FC<SelectProps> = ({ id, register, children }: any) => (
@@ -80,14 +96,33 @@ const CheckboxItem = ({children, text, ...props}: any) => (
    </label>
 )
 
+const RadioItem = ({children, text, ...props}: any) => (
+   <label {...props} className="relative z-1 p-2 pl-10 leading-6 bg-gray-100 rounded-md text-headline text-gray-600 cursor-pointer hover:bg-primaryLight dark:bg-black-800 dark:text-gray-300">
+      {children}
+      <Radio />
+      {text}
+   </label>
+)
+
 const HiddenInput: React.FC<CheckboxProps> = ({ id, defaultValue, register }: any) => (
    <input type="checkbox" className="sr-only peer" id={id} defaultValue={defaultValue} {...register}  />
+)
+
+const HiddenRadioInput: React.FC<CheckboxProps> = ({ id, defaultValue, register }: any) => (
+   <input type="radio" className="sr-only peer" id={id} defaultValue={defaultValue} {...register}  />
 )
 
 const Checkbox = () => (
    <>
       <span className="absolute left-2 top-2 w-6 h-6 rounded-md border border-gray-400 peer-checked:bg-primary peer-checked:border-primary"></span>
       <span className="absolute left-4 top-[6px] w-2 h-4 rotate-45 border-white border-2 border-t-0 border-l-0 hidden peer-checked:block"></span>
+   </>
+)
+
+const Radio = () => (
+   <>
+      <span className="absolute left-2 top-2 w-6 h-6 rounded-full border border-gray-400 peer-checked:bg-white peer-checked:border-primary"></span>
+      <span className="absolute left-3 top-3 w-4 h-4 bg-primary rounded-full hidden peer-checked:block"></span>
    </>
 )
 
@@ -99,4 +134,4 @@ const FormError = ({message}: any) => (
   <p className="text-headline leading-none text-red mt-2"> <i className="ri-error-warning-line text-base align-middle"></i> {message}</p>
 )
 
-export { Form, FormPart, Label, Input, Select, SubmitButton, CheckboxWrapper, CheckboxItem, HiddenInput, FormError};
+export { Form, FormPart, Label, Textarea, Input, Select, SubmitButton, CheckboxWrapper, CheckboxItem, RadioItem, HiddenRadioInput, HiddenInput, FormError};
