@@ -88,6 +88,13 @@ const App = () => {
         onBookingComplete={handleCompleteBooking}
       />
       {bookingSuccess.status ? (<Complete message={bookingSuccess.message} />) : null}
+      <form name="reportBugs" netlify-honeypot="bot-field" data-netlify="true" hidden>
+      <input type="text" name="formName" />
+      <input type="radio" name="formCategory" />
+      <input type="radio" name="formCategory" />
+      <input type="text" name="formSubject" />
+      <textarea name="formMessage"></textarea>
+      </form>
     </>
   );
 };

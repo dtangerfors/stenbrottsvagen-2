@@ -40,7 +40,7 @@ const AppReportBugPage: React.FC<PageProps> = ({}) => {
       </FixedHeader>
       <main className="mt-20 pt-safe-top">
         <div className="max-w-screen-sm p-8 mx-auto bg-white dark:bg-black-900">
-          <Form method="post" netlify-honeypot="bot-field" data-netlify="true" name="reportBugs">
+          <Form method="post" name="reportBugs">
           <input type="hidden" name="bot-field" />
         <input type="hidden" name="form-name" value="reportBugs" />
             <FormPart>
