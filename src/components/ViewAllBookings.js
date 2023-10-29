@@ -39,9 +39,11 @@ function ViewAllBookings(props) {
 
   if (!bookings || bookings.every(noFutureBookings)) {
     return (
-      <p className="text-base text-gray-700">
-        Just nu finns inga bokningar inlagda
-      </p>
+      <div className="col-span-full">
+        <div className="max-w-screen-sm p-6 mx-auto bg-white rounded-sm shadow-xl text-center">
+          <p className="text-base text-gray-700">Just nu finns inga bokningar inlagda</p>
+        </div>
+      </div>
     );
   } else {
     return sortedBookings
