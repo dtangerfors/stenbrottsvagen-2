@@ -9,6 +9,8 @@ import AppProfilePage from "../../components/app_pages/profile";
 import AppMenuPage from "../../components/app_pages/meny";
 import AppAboutPage from "../../components/app_pages/om";
 import AppGalleryPage from "../../components/app_pages/gallery";
+import AppReportBugPage from "../../components/app_pages/report_bug";
+import AppBackHomePage from "../../components/app_pages/report_bug/back_home";
 import Layout from "../../components/layout";
 import Popup from "../../components/popup_window";
 import Complete from "../../components/Complete";
@@ -78,6 +80,8 @@ const App = () => {
           <PrivateRoute path="/app/meny" component={AppMenuPage} />
           <PrivateRoute path="/app/om" component={AppAboutPage} />
           <PrivateRoute path="/app/galleri" component={AppGalleryPage} />
+          <PrivateRoute path="/app/rapportera-problem" component={AppReportBugPage} />
+          <PrivateRoute path="/app/tack" component={AppBackHomePage} />
         </Router>
       </Layout>
       <Popup
@@ -86,6 +90,13 @@ const App = () => {
         onBookingComplete={handleCompleteBooking}
       />
       {bookingSuccess.status ? (<Complete message={bookingSuccess.message} />) : null}
+      <form name="reportBugs" netlify-honeypot="bot-field" data-netlify="true" hidden>
+      <input type="text" name="formName" />
+      <input type="radio" name="formCategory" />
+      <input type="radio" name="formCategory" />
+      <input type="text" name="formSubject" />
+      <textarea name="formMessage"></textarea>
+      </form>
     </>
   );
 };
