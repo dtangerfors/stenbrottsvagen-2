@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import type { PageProps } from "gatsby";
+import { PageProps, navigate } from "gatsby";
 import { useForm } from "react-hook-form";
 import FixedHeader from "../../FixedHeader";
 import { AuthContext } from "../../../auth/AuthProvider";
@@ -25,7 +25,7 @@ type FormData = {
 };
 
 const AppReportBugPage: React.FC<PageProps> = ({}) => {
-//   const user = useContext(AuthContext).currentUser;
+  //   const user = useContext(AuthContext).currentUser;
   const {
     register,
     handleSubmit,
@@ -33,6 +33,25 @@ const AppReportBugPage: React.FC<PageProps> = ({}) => {
     control,
     reset,
   } = useForm<FormData>();
+
+  const encode = (data: any) => {
+    return Object.keys(data)
+        .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+        .join("&");
+  }
+
+  const onSubmit = (data: any, e: any) => {
+    e.preventDefault();
+
+    fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: encode({"form-name": "reportBugs", ...data})
+    })
+    .then(() => navigate("/app/tack"))
+    .catch((error) => alert(error));
+  }
+
   return (
     <>
       <FixedHeader>
@@ -40,9 +59,9 @@ const AppReportBugPage: React.FC<PageProps> = ({}) => {
       </FixedHeader>
       <main className="mt-20 pt-safe-top">
         <div className="max-w-screen-sm p-8 mx-auto bg-white dark:bg-black-900">
-          <Form method="post" name="reportBugs">
-          <input type="hidden" name="bot-field" />
-        <input type="hidden" name="form-name" value="reportBugs" />
+          <Form method="post" name="reportBugs" onSubmit={handleSubmit(onSubmit)}>
+            <input type="hidden" name="bot-field" />
+            <input type="hidden" name="form-name" value="reportBugs" />
             <FormPart>
               <Label text="Namn" htmlFor="formName" />
               <Input
@@ -53,23 +72,23 @@ const AppReportBugPage: React.FC<PageProps> = ({}) => {
               />
             </FormPart>
             <FormPart>
-               <Label htmlFor="formCategory" text="Kategori" />
-               <CheckboxWrapper>
-                  <RadioItem text="Bugg" htmlFor="categoryBug">
-                     <HiddenRadioInput
-                     defaultValue="categoryBug"
-                     id="categoryBug"
-                     register={register("formCategory")}
-                     />
-                  </RadioItem>
-                  <RadioItem text="Önskemål" htmlFor="categoryFeature">
-                     <HiddenRadioInput
-                     defaultValue="categoryFeature"
-                     id="categoryFeature"
-                     register={register("formCategory")}
-                     />
-                  </RadioItem>
-               </CheckboxWrapper>
+              <Label htmlFor="formCategory" text="Kategori" />
+              <CheckboxWrapper>
+                <RadioItem text="Bugg" htmlFor="categoryBug">
+                  <HiddenRadioInput
+                    defaultValue="Bugg"
+                    id="categoryBug"
+                    register={register("formCategory")}
+                  />
+                </RadioItem>
+                <RadioItem text="Önskemål" htmlFor="categoryFeature">
+                  <HiddenRadioInput
+                    defaultValue="Önskemål"
+                    id="categoryFeature"
+                    register={register("formCategory")}
+                  />
+                </RadioItem>
+              </CheckboxWrapper>
             </FormPart>
             <FormPart>
               <Label text="Ämne" htmlFor="formSubject" />
@@ -81,11 +100,15 @@ const AppReportBugPage: React.FC<PageProps> = ({}) => {
               />
             </FormPart>
             <FormPart>
-               <Label text="Meddelande" htmlFor="formMessage"/>
-               <Textarea id="formMessage" placeholder="Beskriv gärna problemet/ditt önskemål" register={register("formSubject", { required: true })}/>
+              <Label text="Meddelande" htmlFor="formMessage" />
+              <Textarea
+                id="formMessage"
+                placeholder="Beskriv gärna problemet/ditt önskemål"
+                register={register("formMessage", { required: true })}
+              />
             </FormPart>
             <FormPart>
-               <SubmitButton name="Submit" value="Skicka rapport" />
+              <SubmitButton name="Submit" value="Skicka rapport" />
             </FormPart>
           </Form>
         </div>

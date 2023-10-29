@@ -29,6 +29,9 @@ const AppMenuPage: React.FC<PageProps> = () => {
             <MenuButtonInternal href="/app/rapportera-problem" title="Rapportera problem" icon="bug" />
           </li>
           <li>
+            <MenuButtonInternal href="/app/tack" title="Tack" icon="bug" />
+          </li>
+          <li>
             <MenuButtonExternal href="/app/om" title="Admin" icon="admin" />
           </li>
         </ul>
