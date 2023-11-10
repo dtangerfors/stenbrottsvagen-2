@@ -4,10 +4,18 @@ import { signOut } from "firebase/auth";
 import FixedHeader from "../../FixedHeader";
 import { MenuButtonInternal, MenuButtonExternal } from "./MenuButtons";
 import { PrimaryButton } from "../../buttons";
+import { useCookies } from "react-cookie";
 
 import { auth } from "../../../firebase";
 
 const AppMenuPage: React.FC<PageProps> = () => {
+  const [cookies, setCookie, removeCookie] = useCookies(["user"]);
+
+  const handleLogout = () => {
+    removeCookie("user", { path: "/" });
+    signOut(auth)
+  }
+
   return (
     <>
       <FixedHeader>
@@ -34,7 +42,7 @@ const AppMenuPage: React.FC<PageProps> = () => {
         </ul>
         <div className="flex justify-center mt-20">
           <PrimaryButton
-            onClick={() => signOut(auth)}
+            onClick={handleLogout}
             text={"Logga ut"}
             actionText={"Klicka här för att logga ut från portalen"}
           />
