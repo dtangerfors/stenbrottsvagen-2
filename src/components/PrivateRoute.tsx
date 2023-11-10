@@ -1,17 +1,33 @@
 import React, {FC} from "react"
 import PropTypes from "prop-types"
 import { navigate } from "gatsby"
-import { useAuthValue } from "../auth/AuthProvider"
+import { useAuthValue, useIsLoaded } from "../auth/AuthProvider"
+import { useCookies } from "react-cookie";
 
 const PrivateRoute = ({ component: Component, location, ...rest }: {component: any, Component: FC, location: any,}) => {
 
-  const {currentUser} = useAuthValue()
-  if(!currentUser){
+  const [cookies, setCookie] = useCookies(["user"]);
+
+  const currentUser = cookies.user;
+  const isLoaded = useIsLoaded();
+
+  console.log(`private: ${isLoaded}`)
+  console.log(`currentUser: ${currentUser}`)
+
+  // const {currentUser} = useAuthValue()
+  // if(!currentUser){
+    
+  //   return null
+  // }
+
+  if(!isLoaded && currentUser) {
+    return <></>
+  } else if (currentUser && isLoaded) {
+    return <Component {...rest} />
+  } else {
     navigate("/")
-    return null
   }
 
-  return <Component {...rest} />
 }
 
 PrivateRoute.propTypes = {
