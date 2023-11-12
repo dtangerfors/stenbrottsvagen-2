@@ -18,6 +18,16 @@ const config: GatsbyConfig = {
     `gatsby-plugin-sitemap`,
     `gatsby-plugin-netlify`,
     {
+      resolve: "gatsby-source-wordpress",
+      options: {
+        url: process.env.WPGRAPHQL_URL,
+        schema: {
+          perPage: 20,
+          requestConcurrency: 5,
+        },
+      },
+    },
+    {
       resolve: `gatsby-plugin-manifest`,
       options: {
         name: `Stenbrottsvägen`,

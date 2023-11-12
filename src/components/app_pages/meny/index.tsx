@@ -37,7 +37,7 @@ const AppMenuPage: React.FC<PageProps> = () => {
             <MenuButtonInternal href="/app/rapportera-problem" title="Rapportera problem" icon="bug" />
           </li>
           <li>
-            <MenuButtonExternal href="/app/om" title="Admin" icon="admin" />
+            <MenuButtonExternal href="https://admin.sbv.dtangerfors.se/wp-login.php" title="Admin" icon="admin" />
           </li>
         </ul>
         <div className="flex justify-center mt-20">
