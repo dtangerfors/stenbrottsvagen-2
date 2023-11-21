@@ -11,9 +11,6 @@ const PrivateRoute = ({ component: Component, location, ...rest }: {component: a
   const currentUser = cookies.user;
   const isLoaded = useIsLoaded();
 
-  console.log(`private: ${isLoaded}`)
-  console.log(`currentUser: ${currentUser}`)
-
   // const {currentUser} = useAuthValue()
   // if(!currentUser){
     
