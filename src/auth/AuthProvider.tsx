@@ -3,12 +3,17 @@ import { auth } from "../firebase/index";
 import { onAuthStateChanged } from "firebase/auth";
 import { User as FirebaseUser} from "firebase/auth";
 import { useCookies } from "react-cookie";
+import { getUserRights } from "../firebase/bookingDb";
 
 let currentUser: FirebaseUser;
 
-export const AuthContext = createContext(currentUser);
+const AuthContext = createContext(currentUser);
 const AuthLoadedContext = createContext(false);
-export const useAuth = () => useContext(AuthContext);
+const UserRoleContext = createContext({
+  isAdmin: false,
+  isManager: false,
+});
+const useAuth = () => useContext(AuthContext);
 
 type Props = {
   children?: ReactNode
@@ -17,35 +22,48 @@ type Props = {
 const AuthProvider: FC<Props> = ({ children }) => {
 
   const [currentUser, setCurrentUser] = useState<FirebaseUser | null>(null);
+  const [userRoles, setUserRoles] = useState({
+    isAdmin: false,
+    isManager: false,
+  });
   const [isLoaded, setIsLoaded] = useState(false);
   const [cookies, setCookie] = useCookies(["user"]);
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       setCurrentUser(user);
-
       if(user) {
         setCookie("user", user.uid, { path: "/" });
         setIsLoaded(true);
       }
     });
-  }, []);
+    if(currentUser) {
+      getUserRights(currentUser.uid, setUserRoles)
+    }
+  }, [currentUser]);
 
   return (
     <AuthContext.Provider value={{currentUser, setCurrentUser}}>
       <AuthLoadedContext.Provider value={isLoaded}>
-        {children}
+        <UserRoleContext.Provider value={userRoles}>
+          {children}
+        </UserRoleContext.Provider>
       </AuthLoadedContext.Provider>
     </AuthContext.Provider>
   );
 };
 
-export function useAuthValue(){
+function useAuthValue(){
   return useContext(AuthContext)
 }
 
-export function useIsLoaded(){
+function useIsLoaded(){
   return useContext(AuthLoadedContext)
 }
 
+function useHasUserRoles(){
+  return useContext(UserRoleContext)
+}
+
+export {useAuthValue, useIsLoaded, AuthContext, useAuth, useHasUserRoles}
 export default AuthProvider;

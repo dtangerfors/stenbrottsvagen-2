@@ -15,6 +15,7 @@ import Layout from "../../components/layout";
 import Popup from "../../components/popup_window";
 import Complete from "../../components/Complete";
 import MetaTags from "../../components/MetaTags";
+import AppAdminPage from "../../components/app_pages/admin";
 
 const App = () => {
   const [bookingSuccess, setBookingSuccess] = useState({
@@ -82,6 +83,7 @@ const App = () => {
           <PrivateRoute path="/app/galleri" component={AppGalleryPage} />
           <PrivateRoute path="/app/rapportera-problem" component={AppReportBugPage} />
           <PrivateRoute path="/app/tack" component={AppBackHomePage} />
+          <PrivateRoute path="/app/admin" component={AppAdminPage} />
         </Router>
       </Layout>
       <Popup
