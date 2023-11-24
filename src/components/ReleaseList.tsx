@@ -21,7 +21,7 @@ export default function ReleaseList() {
 
   useEffect(() => {
     fetch(
-      "https://api.github.com/repos/dtangerfors/stenbrottsvagen-app/releases"
+      "https://api.github.com/repos/dtangerfors/stenbrottsvagen-2/releases"
     )
       .then((response) => {
         if (response.ok) return response.json();

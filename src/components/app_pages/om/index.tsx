@@ -14,7 +14,7 @@ const AppAboutPage: React.FC<PageProps> = () => {
          <FixedHeader>
             <h1 className="mx-auto text-base text-white">Om</h1>
          </FixedHeader>
-         <main className="mt-20 py-20 px-8">
+         <main className="mt-20 py-20 px-8 pt-safe-top">
             <section className="max-w-screen-xl mx-auto">
                <div>
                   <ReleaseList />
