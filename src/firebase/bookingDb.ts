@@ -1,4 +1,4 @@
-import { ref, push, set, update, remove } from "firebase/database";
+import { ref, push, set, update, remove, child, get } from "firebase/database";
 import { firebaseDB } from ".";
 
 const getAllBookings = () => {
@@ -32,13 +32,27 @@ const removeBooking = (key: string, userID: string) => {
   return remove(ref(firebaseDB, `/bookings/${userID}/${key}`));
 };
 
+function getUserRights(userId: string, callback: Function) {
+
+  return get(child(ref(firebaseDB), `/users/${userId}`)).then((snapshot) => {
+    if (snapshot.exists()) {
+      callback(snapshot.val());
+    } else {
+      console.log("No data available");
+    }
+  }).catch((error) => {
+    console.error(error);
+  });
+}
+
 const bookingDb = {
   getBooking,
   getAllBookings,
   getUserBookings,
   createBooking,
   updateBooking,
-  removeBooking,
+  removeBooking
 };
 
 export default bookingDb
+export {getUserRights}
